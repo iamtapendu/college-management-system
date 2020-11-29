@@ -6,7 +6,7 @@
 
 ###database files###
 
-*.dat
+database/*.dat
 
 
 ###log files###
