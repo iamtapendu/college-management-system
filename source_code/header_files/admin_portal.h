@@ -68,17 +68,25 @@ void student_details()
 		{
 			case 1:
 				store(0);
+				sprintf(action,"[ id:%d ]-> add student profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 2:
 				update(0);
+				sprintf(action,"[ id:%d ]-> update student profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 3:
 				dlt(0);
+				sprintf(action,"[ id:%d ]-> delete student profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 4:
 				system("clear");lgp();
 				show(0);
 				cin.get();
+				sprintf(action,"[ id:%d ]-> view all student details",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 5:
 				return;
@@ -112,17 +120,25 @@ void staff_details()
 		{
 			case 1:
 				store(1);
+				sprintf(action,"[ id:%d ]-> add staff profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 2:
 				update(1);
+				sprintf(action,"[ id:%d ]-> update staff profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 3:
 				dlt(1);
+				sprintf(action,"[ id:%d ]-> delete a staff profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 4:
 				system("clear");lgp();
 				show(1);
 				cin.get();
+				sprintf(action,"[ id:%d ]-> view all staff details",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 5:
 				return;
@@ -183,14 +199,24 @@ void admin_portal()
 		{
 			case 1:
 				admn.view_profile();
+				sprintf(action,"[ id:%d ]-> view own profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 2:
 				admn.update();
 				save(admn,location);
+				sprintf(action,"[ id:%d ]-> update own profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 3:
 				if(admn.chg_pass())
+				{
 					save(admn,location);
+					sprintf(action,"[ id:%d ]-> change profile password",id);
+				}
+				else
+					sprintf(action,"[ id:%d ]-> fail to change profile password",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 4:
 				staff_details();
@@ -203,14 +229,30 @@ void admin_portal()
 				cout<<gp<<gp<<"****ALL ADMIN DETAILS****"<<endl<<endl;
 				show(2);
 				cin.get();
+				sprintf(action,"[ id:%d ]-> view all admin details",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 7:
-				//log();
+				sprintf(action,"[ id:%d ]-> view log file",id);
+				lg.write((char*)&action,sizeof(action));
+				lg.close();
+				view_log();
+				lg.open(logfile,ios::out|ios::app);
+				if(lg.fail())
+				{
+					pline();
+					cout<<gp<<"logfile can't open/create"<<endl;
+					pline();
+				}
 				break;
 			case 8:
+				sprintf(action,"[ id:%d ]-> delete own account",id);
+				lg.write((char*)&action,sizeof(action));
 				dlt_account(admn);
 			case 9:
-				//log_close
+				sprintf(action,"[ id:%d ]-> log out",id);
+				lg.write((char*)&action,sizeof(action));
+				lg.close();
 				return;
 			default:
 				pline();

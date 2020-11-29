@@ -47,22 +47,36 @@ void staff_portal()
 		{
 			case 1:
 				stff.view_profile();
+				sprintf(action,"[ id:%d ]-> view own profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 2:
 				stff.update();
 				save(stff,location);
+				sprintf(action,"[ id:%d ]-> update own profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 3:
 				if(stff.chg_pass())
+				{
 					save(stff,location);
+					sprintf(action,"[ id:%d ]-> change profile password",id);
+				}
+				else
+					sprintf(action,"[ id:%d ]-> fail to change profile password",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 4:
 				system("clear");lgp();
 				show(0);
 				cin.get();
+				sprintf(action,"[ id:%d ]-> view all student profile",id);
+				lg.write((char*)&action,sizeof(action));
 				break;
 			case 5:
-				//log_close
+				sprintf(action,"[ id:%d ]-> logout",id);
+				lg.write((char*)&action,sizeof(action));
+				lg.close();
 				return;
 			default:
 				pline();

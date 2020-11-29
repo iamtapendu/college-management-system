@@ -15,6 +15,9 @@ const char logfile[]={"database/activity_details.log"};
 const int base=10000;
 int id;
 
+char action[64];
+fstream lg;
+
 int set_id(int);
 int check_authentication(int,char*,int);
 

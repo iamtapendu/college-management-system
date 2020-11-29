@@ -3,14 +3,12 @@
 #include"header_files/student_portal.h"
 
 
-
 int main()
 {
 	int choice=99;
-	char action[64];
-	fstream log;
-	log.open(logfile,ios::out|ios::app);
-	if(log.fail())
+	
+	lg.open(logfile,ios::out|ios::app);
+	if(lg.fail())
 	{
 		pline();
 		cout<<gp<<"logfile can't open/create"<<endl;
@@ -37,7 +35,8 @@ int main()
 			case 1:
 				if(login(2))
 				{
-					//strcpy(action,")
+					sprintf(action,"[ id:%d ]-> Opens admin portal",id);
+					lg.write((char*)&action,sizeof(action));
 					admin_portal();
 				}
 				else
@@ -45,17 +44,26 @@ int main()
 				break;
 			case 2:
 				if(login(1))
+				{
+					sprintf(action,"[ id:%d ]-> Opens staff portal",id);
+					lg.write((char*)&action,sizeof(action));
 					staff_portal();
+				}
 				else
 					cin.get();
 				break;
 			case 3:
 				if(login(0))
+				{
+					sprintf(action,"[ id:%d ]-> Opens student portal",id);
+					lg.write((char*)&action,sizeof(action));
 					student_portal();
+				}
 				else
 					cin.get();
 				break;
 			default :
+				lg.close();
 				choice=0;
 		}
 		

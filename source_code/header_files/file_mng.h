@@ -366,4 +366,27 @@ void dlt(int key)
 	}
 }
 
+void view_log()
+{
+	system("clear");lgp();
+	fstream lg;
+	char action[64];
+	lg.open(logfile,ios::in);
+	if(lg.fail())
+	{
+		pline();
+		cout<<gp<<"logfile can't open/create"<<endl;
+		pline();
+	}
+	pline();
+	cout<<gp<<"****Activity log****"<<endl;
+	pline('=',50);
+	while(lg.read((char*)&action,sizeof(action)))
+	{
+		cout<<gp<<action<<endl;
+	}
+	lg.close();
+	cin.get();
+}
+
 #endif
