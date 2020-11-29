@@ -1,0 +1,15 @@
+###complied files###
+
+*.out
+*.o
+*.exe
+
+###database files###
+
+*.dat
+
+
+###log files###
+
+*.log
+
