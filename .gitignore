@@ -11,5 +11,5 @@ database/*.dat
 
 ###log files###
 
-*.log
+database/*.log
 
