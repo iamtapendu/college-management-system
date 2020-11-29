@@ -1,6 +1,6 @@
-#include"admin_portal.h"
-#include"staff_portal.h"
-#include"student_portal.h"
+#include"header_files/admin_portal.h"
+#include"header_files/staff_portal.h"
+#include"header_files/student_portal.h"
 
 
 
@@ -12,7 +12,7 @@ int main()
 		system("clear");
 		lgp();
 		pline('=',30);
-		cout<<gp<<"*****Wellcome to backdoor*****"<<endl;
+		cout<<gp<<"To Create account press any number given below"<<endl;
 		pline('=',30);
 		cout<<gp<<"1. Admin"<<endl;
 		cout<<gp<<"2. Staff"<<endl;
