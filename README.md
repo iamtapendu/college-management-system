@@ -1,17 +1,17 @@
 # college-management-system
 
-#run config.sh 
+# run config.sh 
 ./config.sh
 
-#for run the program 
+# for run the program 
 
 ./CMS
 
-#for create own profile
+# for create own profile
 
 ./create_profile
 
-#default admin 
+# default admin 
 
 id : 10000
 password : admin
